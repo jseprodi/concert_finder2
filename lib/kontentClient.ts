@@ -4,7 +4,9 @@ import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types
 import { Band } from "./models/content-types/band"; 
 import { IContentItem } from "@kontent-ai/delivery-sdk";
 
+// Access the environment variable using process.env
 const environmentId = process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;
+
 if (!environmentId) {
   throw new Error("NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID environment variable is not set.");
 }
@@ -14,14 +16,8 @@ const deliveryClient = createDeliveryClient<CoreClientTypes>({
   environmentId,
 });
 
-// Utility function for error logging
-function logError(operation: string, error: unknown): void {
-  if (error instanceof Error) {
-    console.error(`Error during ${operation}: ${error.message}`, error.stack);
-  } else {
-    console.error(`Unknown error during ${operation}:`, error);
-  }
-}
+// Export the delivery client for reuse
+export { deliveryClient };
 
 /**
  * Fetches the homepage item from Kontent.ai.
@@ -110,7 +106,4 @@ export async function fetchVenues(): Promise<IContentItem[]> {
     return [];
   }
 }
-
-// Export the delivery client for reuse
-export { deliveryClient };
 
