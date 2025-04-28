@@ -3,7 +3,7 @@ import { CoreClientTypes } from "./models/system/core.type.js";
 import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types/web_spotlight_root";
 import { Band } from "./models/content-types/band"; 
 import { IContentItem } from "@kontent-ai/delivery-sdk";
-c1ad4901-f748-000b-2b83-2c4fa51e2983
+
 const environmentId = NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;
 if (!environmentId) {
   throw new Error("NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID environment variable is not set.");
