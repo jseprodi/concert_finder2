@@ -116,7 +116,7 @@ export default function ArtistSearch() {
       return <RichTextComponent richTextElement={element as Elements.RichTextElement} />;
     } else if (Array.isArray(element?.value)) {
       // Handle arrays (e.g., linked items, multiple-choice elements, or images)
-      return element.value.map((item, index) => {
+      return element.value.map((item: { url?: string; name?: string; title?: string; description?: string }, index: number) => {
         if (item.url) {
           // Render images
           return (
@@ -173,7 +173,7 @@ export default function ArtistSearch() {
       );
     } else if (element?.value?.length && typeof element?.value[0] === 'object') {
       // Handle arrays of objects (e.g., linked items)
-      return element.value.map((item: any, index: number) => (
+      return element.value.map((item: { name?: string; title?: string }, index: number) => (
         <span key={index}>{item.name || item.title || JSON.stringify(item)}</span>
       ));
     } else {
