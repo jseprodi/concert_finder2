@@ -4,7 +4,7 @@ import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types
 import { Band } from "./models/content-types/band"; 
 import { IContentItem } from "@kontent-ai/delivery-sdk";
 
-const environmentId = NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;
+const environmentId = process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;
 if (!environmentId) {
   throw new Error("NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID environment variable is not set.");
 }
