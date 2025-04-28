@@ -15,7 +15,7 @@
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
 import type { CoreContentType } from '@models/system/index';
-import type { Vocation } from '../models/taxonomies/index.js';
+import type { Vocation } from '@models/taxonomies/index';
 
 /**
  * Person
