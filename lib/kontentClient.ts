@@ -5,21 +5,17 @@ import { Band } from "./models/content-types/band";
 import { IContentItem } from "@kontent-ai/delivery-sdk";
 import https from "https";
 import axios from "axios";
-import fs from "fs";
-import type { CoreContentType } from "@models/system/index.js";
 
-// Access the environment variable using process.env
-const environmentId = process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;
+let httpsAgent: https.Agent | undefined;
 
-if (!environmentId) {
-  throw new Error("NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID environment variable is not set.");
+if (typeof window === "undefined") {
+  // Only load `fs` and configure `httpsAgent` on the server
+  const fs = require("fs");
+  httpsAgent = new https.Agent({
+    cert: fs.readFileSync("certs/cert.pem"), // Path to your certificate
+    key: fs.readFileSync("certs/key.pem"),   // Path to your private key
+  });
 }
-
-// Load certificates
-const httpsAgent = new https.Agent({
-  cert: fs.readFileSync("certs/cert.pem"), // Path to your certificate
-  key: fs.readFileSync("certs/key.pem"),   // Path to your private key
-});
 
 // Create a custom HTTP service using axios
 const customHttpService = axios.create({
@@ -28,7 +24,7 @@ const customHttpService = axios.create({
 
 // Initializes the Delivery client with `CoreClientTypes` type for type safety
 const deliveryClient = createDeliveryClient<CoreClientTypes>({
-  environmentId,
+  environmentId: process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID!,
   httpService: {
     get: (url, config) => customHttpService.get(url, config),
     post: (url, data, config) => customHttpService.post(url, data, config),
