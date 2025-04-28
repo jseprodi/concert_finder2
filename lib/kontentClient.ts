@@ -1,10 +1,10 @@
-import { createDeliveryClient } from "@kontent-ai/delivery-sdk";
+import { createDeliveryClient, IHttpService } from "@kontent-ai/delivery-sdk";
 import { CoreClientTypes } from "./models/system/core.type.js";
 import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types/web_spotlight_root";
 import { Band } from "./models/content-types/band";
 import { IContentItem } from "@kontent-ai/delivery-sdk";
 import https from "https";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 let httpsAgent: https.Agent | undefined;
 
@@ -17,20 +17,56 @@ if (typeof window === "undefined") {
   });
 }
 
-// Create a custom HTTP service using axios
-const customHttpService = axios.create({
-  httpsAgent,
-});
+// Custom implementation of IHttpService
+class CustomHttpService implements IHttpService<AxiosRequestConfig> {
+  private axiosInstance = axios.create({
+    httpsAgent,
+  });
+
+  async getAsync(call: { url: string; config?: AxiosRequestConfig }) {
+    const response = await this.axiosInstance.get(call.url, call.config);
+    return {
+      data: response.data,
+      headers: response.headers,
+      status: response.status,
+    };
+  }
+
+  async postAsync(call: { url: string; data?: any; config?: AxiosRequestConfig }) {
+    const response = await this.axiosInstance.post(call.url, call.data, call.config);
+    return {
+      data: response.data,
+      headers: response.headers,
+      status: response.status,
+    };
+  }
+
+  async patchAsync(call: { url: string; data?: any; config?: AxiosRequestConfig }) {
+    const response = await this.axiosInstance.patch(call.url, call.data, call.config);
+    return {
+      data: response.data,
+      headers: response.headers,
+      status: response.status,
+    };
+  }
+
+  async deleteAsync(call: { url: string; config?: AxiosRequestConfig }) {
+    const response = await this.axiosInstance.delete(call.url, call.config);
+    return {
+      data: response.data,
+      headers: response.headers,
+      status: response.status,
+    };
+  }
+}
+
+// Create an instance of the custom HTTP service
+const customHttpService = new CustomHttpService();
 
 // Initializes the Delivery client with `CoreClientTypes` type for type safety
 const deliveryClient = createDeliveryClient<CoreClientTypes>({
   environmentId: process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID!,
-  httpService: {
-    get: (url, config) => customHttpService.get(url, config),
-    post: (url, data, config) => customHttpService.post(url, data, config),
-    patch: (url, data, config) => customHttpService.patch(url, data, config),
-    delete: (url, config) => customHttpService.delete(url, config),
-  },
+  httpService: customHttpService,
 });
 
 // Export the delivery client for reuse
