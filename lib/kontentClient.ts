@@ -1,4 +1,5 @@
-import { createDeliveryClient, IHttpService } from "@kontent-ai/delivery-sdk";
+import { createDeliveryClient } from "@kontent-ai/delivery-sdk";
+import { IHttpService } from "@kontent-ai/core-sdk"; // Correct import for IHttpService
 import { CoreClientTypes } from "./models/system/core.type.js";
 import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types/web_spotlight_root";
 import { Band } from "./models/content-types/band";

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@kontent-ai/core-sdk": "^10.10.1",
     "@kontent-ai/delivery-sdk": "^16.1.0",
     "@kontent-ai/rich-text-resolver": "^2.0.2",
     "autoprefixer": "^10.4.21",
