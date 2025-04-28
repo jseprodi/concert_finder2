@@ -13,7 +13,7 @@
 **/
 
 import type { Elements, Snippet } from '@kontent-ai/delivery-sdk';
-import type { CoreContentType } from '../../system/index.js';
+import type { CoreContentType } from '@models/system/index';
 
 /**
  * Supporting Act
