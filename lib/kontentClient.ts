@@ -20,6 +20,15 @@ const deliveryClient = createDeliveryClient<CoreClientTypes>({
 export { deliveryClient };
 
 /**
+ * Logs an error message with additional context.
+ * @param operation - The name of the operation where the error occurred.
+ * @param error - The error object to log.
+ */
+function logError(operation: string, error: unknown): void {
+  console.error(`Error during ${operation}:`, error);
+}
+
+/**
  * Fetches the homepage item from Kontent.ai.
  * @returns The homepage item if found, or null if not found or an error occurs.
  */
