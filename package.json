@@ -1,6 +1,7 @@
 {
   "name": "shows",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,9 +10,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@kontent-ai/core-sdk": "^10.10.1",
-    "@kontent-ai/delivery-sdk": "^16.1.0",
+    "@kontent-ai/core-sdk": "^10.11.0",
+    "@kontent-ai/delivery-sdk": "^16.2.0",
     "@kontent-ai/rich-text-resolver": "^2.0.2",
+    "@kontent-ai/smart-link": "^4.0.2",
     "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
     "dotenv": "^16.5.0",
@@ -26,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "prettier": "^3.5.3",
     "tailwindcss": "^4.1.4",
     "typescript": "^5"
   }
