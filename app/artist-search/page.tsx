@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { fetchBands } from '../../lib/kontentClient'; // Adjust the import path as needed
-import RichTextComponent from '../../components/RichTextComponent'; // Adjust the import path as needed
+import RichTextComponent from '@components/RichTextComponent'; // Adjust the import path as needed
 import { Elements } from '@kontent-ai/delivery-sdk';
 import { PortableText, PortableTextReactResolvers } from '@kontent-ai/rich-text-resolver/utils/react';
-import { Company_band, Company_content_chunk } from '../../lib/models/content-types'; // Adjust the import path as needed
+import { Company_band, Company_content_chunk } from '@models/content-types'; // Adjust the import path as needed
 
 const createRichTextResolver = (element: Elements.RichTextElement): PortableTextReactResolvers => ({
   types: {

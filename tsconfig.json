@@ -24,7 +24,7 @@
       "@models/*": ["lib/models/*"],
       "@/models/*": ["lib/models/*"],
       "types/*": ["types/*"],
-      "@components/*": ["components/*"],
+      "@components/*": ["components/*"]
     },
     "outDir": "./dist"
   },
