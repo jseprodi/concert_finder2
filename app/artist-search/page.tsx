@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchBands } from '../../lib/kontentClient'; 
-import { RichTextComponent } from '../../components/RichTextComponent'; 
-import { Company_band } from '@models/content-types'; 
+import { fetchBands } from '@lib/kontentClient'; 
+import { RichTextComponent } from '@components/RichTextComponent'; 
+import { Company_band } from '@models/content-types/index'; 
 
 /*const createRichTextResolver = (element: Elements.RichTextElement): PortableTextReactResolvers => ({
   types: {

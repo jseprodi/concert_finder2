@@ -22,7 +22,7 @@ import type { CoreContentType } from '@models/system/index';
  * Id: a797ce49-151e-4ecf-a12c-2a34ef9cd750
  * Codename: content_chunk
  */
-export type ContentChunk = CoreContentType<
+export type Company_content_chunk = CoreContentType<
     ContentChunkElementCodenames,
     {
         /**
@@ -49,6 +49,6 @@ export type ContentChunkElementCodenames = 'text';
  * Id: a797ce49-151e-4ecf-a12c-2a34ef9cd750
  * Codename: content_chunk
  */
-export function isContentChunk(item: CoreContentType | undefined | null): item is ContentChunk {
+export function isContentChunk(item: CoreContentType | undefined | null): item is Company_content_chunk {
     return item?.system?.type === 'content_chunk';
 }
