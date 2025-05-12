@@ -4,9 +4,11 @@ import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types
 import { Company_band, isCompany_band } from "./models/content-types"; 
 import { IContentItem } from "@kontent-ai/delivery-sdk";
 import * as contentTypes from './models/content-types';
+import { Company_venue, isCompany_venue } from "./models/content-types/venue";
 
 // Access the environment variable using process.env
 const environmentId = process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;
+const previewApiKey = process.env.KONTENT_PREVIEW_API_KEY;
 
 if (!environmentId) {
   throw new Error("NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID environment variable is not set.");
@@ -27,6 +29,7 @@ const defaultEnvId = 'default';
 
 const getDeliveryClient = ({ envId, previewApiKey }: ClientConfig) => createDeliveryClient({
   environmentId: envId,
+  
   globalHeaders: () => [
     {
       header: sourceTrackingHeaderName,
@@ -38,12 +41,20 @@ const getDeliveryClient = ({ envId, previewApiKey }: ClientConfig) => createDeli
     basePreviewUrl: deliveryPreviewApiDomain,
   },
   previewApiKey: defaultEnvId === envId ? process.env.KONTENT_PREVIEW_API_KEY : previewApiKey
+  
 });
 
 type ClientConfig = {
   envId: string,
   previewApiKey?: string
 }
+
+
+export const ClientConfig = {
+  envId: process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID || '',
+  previewApiKey: process.env.KONTENT_PREVIEW_API_KEY || '',
+};
+
 
 /**
  * Logs an error message with additional context.
@@ -149,12 +160,29 @@ export async function fetchNavigationItems(): Promise<IContentItem[]> {
  * Fetches all content items of type 'venue' from Kontent.ai.
  * @returns An array of venue content items or an empty array if none are found.
  */
-export async function fetchVenues(): Promise<IContentItem[]> {
-  try {
-    const response = await deliveryClient.items<IContentItem>().type('venue').toPromise();
-    return response.data.items;
-  } catch (error) {
-    logError("fetchVenues", error);
-    return [];
-  }
-}
+export const fetchVenues = (
+  config: ClientConfig,
+  slug: string,
+  usePreview: boolean
+): Promise<Company_venue[]> => {
+  console.log("Fetching venues with slug:", slug);
+
+  return getDeliveryClient(config)
+    .items<IContentItem>()
+    .type("venue")
+    .equalsFilter("elements.venue_slug", slug) // Use the correct codename for the slug field
+    .depthParameter(5)
+    .queryConfig({
+      usePreviewMode: usePreview,
+      waitForLoadingNewContent: true,
+    })
+    .toAllPromise()
+    .then((res) => {
+      console.log("Full API Response:", JSON.stringify(res.data.items, null, 2)); // Log the full response
+      return res.data.items.filter(isCompany_venue); // Ensure only valid Company_venue items are returned
+    })
+    .catch((error) => {
+      console.error("Error fetching venues:", error);
+      return [];
+    });
+};

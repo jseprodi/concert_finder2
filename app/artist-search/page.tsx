@@ -34,7 +34,7 @@ const createRichTextResolver = (element: Elements.RichTextElement): PortableText
           const contentChunk = componentItem as Company_content_chunk;
           return (
             <div className="content-chunk-component">
-              {contentChunk.elements.text.value && <p>{contentChunk.elements.text.value}</p>}
+              {contentChunk.elements.content.value && <p>{contentChunk.elements.content.value}</p>}
             </div>
           );
 
@@ -48,7 +48,7 @@ const createRichTextResolver = (element: Elements.RichTextElement): PortableText
 export default function ArtistSearch() {
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Company_band[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [selectedBand, setSelectedBand] = useState<any | null>(null);

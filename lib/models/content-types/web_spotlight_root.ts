@@ -15,7 +15,7 @@
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
 import type { CoreContentType } from '../system/core.type';
-import type { Page } from './index.js';
+import type { Company_page } from './index';
 
 /**
  * Navigation item root
@@ -43,7 +43,7 @@ export type NavigationItemRoot = CoreContentType<
          * Codename: subpages
          * Id: 682c4b4e-152f-4678-becd-1b9706a9e3a0
          */
-        readonly subpages: Elements.LinkedItemsElement<Page>;
+        readonly subpages: Elements.LinkedItemsElement<Company_page>;
         /**
          * Content
          *

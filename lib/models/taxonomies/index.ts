@@ -13,4 +13,4 @@
 * -------------------------------------------------------------------------------
 **/
 
- export * from './assetType.ts'; export * from './genre.ts'; export * from './importance.ts'; export * from './month.ts'; export * from './vocation.ts'; export * from './year.ts';
+ export * from './assetType'; export * from './genre'; export * from './importance'; export * from './month'; export * from './vocation'; export * from './year';

@@ -17,6 +17,7 @@
 import type { Elements } from '@kontent-ai/delivery-sdk';
 import type { Company_location } from './index.ts';
 import type { CoreContentType } from '../system/index.ts';
+import type { IContentItem } from '@kontent-ai/delivery-sdk';
 
 /**
 * Venue
@@ -79,6 +80,14 @@ export type Company_venueElementCodenames = 'venue_name' | 'hero_image' | 'locat
 * Id: fb0081ad-34a0-4c69-b262-7cec3bad6b4b
 * Codename: venue
 */
-export function isCompany_venue(item: CoreContentType | undefined | null): item is Company_venue {
-                return item?.system?.type === 'venue';
+export function isCompany_venue(
+    item: IContentItem
+): item is Company_venue {
+                return (
+                    item?.system?.type === 'venue' &&
+                    'venue_name' in item.elements &&
+                    'hero_image' in item.elements &&
+                    'location' in item.elements &&
+                    'venue_slug' in item.elements
+                );
             };

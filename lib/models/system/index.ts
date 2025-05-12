@@ -13,4 +13,4 @@
 * -------------------------------------------------------------------------------
 **/
 
- export * from './core.type.ts'; export * from './delivery.codenames.ts';
+ export * from './core.type'; export * from './delivery.codenames';

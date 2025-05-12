@@ -14,7 +14,7 @@
 **/
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { Band } from './index.js';
+import type { Company_band } from './index';
 import type { CoreContentType } from '@models/system/index';
 
 /**
@@ -45,7 +45,7 @@ export type PlaylistSong = CoreContentType<
          * Id: 0a911b05-3385-4d06-934e-8bde873498ab
          * Guidelines: Link to performing artist
          */
-        readonly artist: Elements.LinkedItemsElement<Band>;
+        readonly artist: Elements.LinkedItemsElement<Company_band>;
         /**
          * Song Link
          *
