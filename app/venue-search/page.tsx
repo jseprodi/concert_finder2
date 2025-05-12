@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { fetchVenues } from '../../lib/kontentClient';
 import { ClientConfig } from '../../lib/kontentClient';
-import RichTextComponent from '@components/RichTextComponent';
+import RichTextComponent from '../../components/RichTextComponent';
 
 export default function VenueSearch() {
   const [query, setQuery] = useState('');

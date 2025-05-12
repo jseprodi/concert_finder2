@@ -1,13 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchBands } from '../../lib/kontentClient'; // Adjust the import path as needed
-import RichTextComponent from '@components/RichTextComponent'; // Adjust the import path as needed
-import { Elements } from '@kontent-ai/delivery-sdk';
-import { PortableText, PortableTextReactResolvers } from '@kontent-ai/rich-text-resolver/utils/react';
-import { Company_band, Company_content_chunk } from '@models/content-types'; // Adjust the import path as needed
+import { fetchBands } from '../../lib/kontentClient'; 
+import { RichTextComponent } from '../../components/RichTextComponent'; 
+import { Company_band } from '@models/content-types'; 
 
-const createRichTextResolver = (element: Elements.RichTextElement): PortableTextReactResolvers => ({
+/*const createRichTextResolver = (element: Elements.RichTextElement): PortableTextReactResolvers => ({
   types: {
     // Resolution for components and content items inserted in rich text
     componentOrItem: ({ value }) => {
@@ -44,6 +42,7 @@ const createRichTextResolver = (element: Elements.RichTextElement): PortableText
     },
   },
 });
+*/
 
 export default function ArtistSearch() {
   const [query, setQuery] = useState('');
@@ -80,8 +79,8 @@ export default function ArtistSearch() {
           envId: process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID || '',
           previewApiKey: process.env.KONTENT_PREVIEW_API_KEY || '',
         };
-        const slug = ''; // Replace with a specific slug or leave empty for all bands
-        const usePreview = false; // Set to true if you want to use the preview API
+        const slug = ''; 
+        const usePreview = false; 
 
         const bands = await fetchBands(config, slug, usePreview);
         console.log('Fetched Bands:', bands);
