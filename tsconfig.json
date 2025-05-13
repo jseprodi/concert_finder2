@@ -20,10 +20,12 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "@models/*": ["lib/models/*"],
       "@types/*": ["lib/types/*"],
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
+      "@system/*": ["lib/system/*"]
     },
     "outDir": "./dist"
   },

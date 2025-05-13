@@ -15,10 +15,10 @@
 
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { Company_person, Company_playlist_song } from './index.ts';
-import type { CoreContentType } from '../system/index.ts';
+import type { Company_person, PlaylistSong } from '@models/content-types/index.js';
+import type { CoreContentType } from '../system/index.js';
 import type { IContentItem } from '@kontent-ai/delivery-sdk';
-import type { Genre } from '../taxonomies/index.ts';
+import type { Genre } from '../taxonomies/genre.js';
 
 /**
 * Band
@@ -98,7 +98,7 @@ Company_bandElementCodenames,
                 * Id: cf85fe66-1563-459e-9d05-6852e84113b2
 * Guidelines: Include three to five of the band/artist's songs that are most popular or otherwise representational of their body of work.
                 */ 
-                readonly band_playlist: Elements.LinkedItemsElement<Company_playlist_song>;
+                readonly band_playlist: Elements.LinkedItemsElement<PlaylistSong>;
                 /**
                 * Genre
                 * 

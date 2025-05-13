@@ -13,4 +13,4 @@
 * -------------------------------------------------------------------------------
 **/
 
- export * from './core.type'; export * from './delivery.codenames';
+ export * from './core.type.js'; export * from './delivery.codenames.js';

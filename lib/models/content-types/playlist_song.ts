@@ -14,8 +14,8 @@
 **/
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { Company_band } from './index';
-import type { CoreContentType } from '@models/system/index';
+import type { Company_band } from './index.js';
+import type { CoreContentType } from '@models/system/index.js';
 
 /**
  * Playlist Song

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchVenues } from '../../lib/kontentClient';
-import { ClientConfig } from '../../lib/kontentClient';
-import RichTextComponent from '../../components/RichTextComponent';
+import { fetchVenues } from 'lib/kontentClient.js';
+import { ClientConfig } from 'lib/kontentClient.js';
+import RichTextComponent from 'components/RichTextComponent.js';
 
 export default function VenueSearch() {
   const [query, setQuery] = useState('');

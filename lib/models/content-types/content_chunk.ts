@@ -14,7 +14,7 @@
 **/
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { CoreContentType } from '@models/system/index';
+import type { CoreContentType } from '@models/system/index.js';
 
 /**
  * Content Chunk

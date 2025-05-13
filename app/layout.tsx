@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { fetchNavigationItems } from "../lib/kontentClient"; 
+import { fetchNavigationItems } from "lib/kontentClient.js"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -33,7 +32,7 @@ export default async function RootLayout({
 
   try {
     // Fetch navigation items
-    const fetchedItems = await fetchNavigationItems(); // Replace with the actual function to fetch navigation items
+    const fetchedItems = await fetchNavigationItems(); 
 
     // Transform the fetched items into the NavigationItem type
     navigationItems = fetchedItems.map((item): LocalNavigationItem => ({

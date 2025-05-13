@@ -15,8 +15,8 @@
 
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { Company_band } from './index.ts';
-import type { CoreContentType } from '../system/index.ts';
+import type { Company_band } from './index.js';
+import type { CoreContentType } from '../system/index.js';
 
 /**
 * Concert
