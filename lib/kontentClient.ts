@@ -1,10 +1,10 @@
 import { createDeliveryClient } from "@kontent-ai/delivery-sdk";
-import { CoreClientTypes } from "./models/system/core.type.js";
-import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types/web_spotlight_root.js";
-import { Company_band, isCompany_band } from "./models/content-types/index.js"; 
+import { CoreClientTypes } from "./models/system/core.type";
+import { NavigationItemRoot, isNavigationItemRoot } from "./models/content-types/web_spotlight_root";
+import { Company_band, isCompany_band } from "./models/content-types/index"; 
 import { IContentItem } from "@kontent-ai/delivery-sdk";
-import * as contentTypes from './models/content-types/index.js';
-import { Company_venue, isCompany_venue } from "./models/content-types/venue.js";
+import * as contentTypes from './models/content-types/index';
+import { Company_venue, isCompany_venue } from "./models/content-types/venue";
 
 // Access the environment variable using process.env
 const environmentId = process.env.NEXT_PUBLIC_KONTENT_ENVIRONMENT_ID;

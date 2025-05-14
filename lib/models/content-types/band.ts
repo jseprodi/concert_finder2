@@ -16,9 +16,9 @@
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
 import type { Company_person, PlaylistSong } from '@models/content-types/index.js';
-import type { CoreContentType } from '../system/index.js';
+import type { CoreContentType } from '../system/index';
 import type { IContentItem } from '@kontent-ai/delivery-sdk';
-import type { Genre } from '../taxonomies/genre.js';
+import type { Genre } from '../taxonomies/genre';
 
 /**
 * Band

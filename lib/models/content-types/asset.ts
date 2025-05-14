@@ -15,8 +15,8 @@
 
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { AssetType } from '../taxonomies/asset_type.js';
-import type { CoreContentType } from '../system/index.js';
+import type { AssetType } from '../taxonomies/asset_type';
+import type { CoreContentType } from '../system/index';
 
 /**
 * Asset

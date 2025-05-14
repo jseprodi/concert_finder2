@@ -14,8 +14,8 @@
 **/
 
 import type { Elements } from '@kontent-ai/delivery-sdk';
-import type { CoreContentType } from 'lib/models/system/core.type.js';
-import type { Company_page } from 'lib/models/index.js';
+import type { CoreContentType } from 'lib/models/system/core.type';
+import type { Company_page } from 'lib/models/index';
 
 /**
  * Navigation item root

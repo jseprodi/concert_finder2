@@ -13,15 +13,15 @@
 * -------------------------------------------------------------------------------
 **/
 
-export * from './asset.js'; 
-export * from './band.js'; 
-export * from './concert.js'; 
-export * from './concertReview.js'; 
-export * from './content_chunk.js'; 
-export * from './location.js'; 
-export * from './page.js'; 
-export * from './person.js'; 
-export * from './playlist_song.js'; 
-export * from './venue.js'; 
-export * from './web_spotlight_root.js'; 
-export * from './navigation_item.js';
+export * from './asset'; 
+export * from './band'; 
+export * from './concert'; 
+export * from './concertReview'; 
+export * from './content_chunk'; 
+export * from './location'; 
+export * from './page'; 
+export * from './person'; 
+export * from './playlist_song'; 
+export * from './venue'; 
+export * from './web_spotlight_root'; 
+export * from './navigation_item';
